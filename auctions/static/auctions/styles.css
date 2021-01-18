@@ -1,0 +1,116 @@
+body {
+    background-color: #333;
+    color: #C6C7C8;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+#cardik {
+    margin: 30px 200px 200px 200px;
+	background-color: #333;
+    border: 2px solid white;
+    color: #C6C7C8;
+}
+
+.categories {
+    text-decoration: none;
+    color: #C6C7C8;
+    font-size: 36px;
+}
+
+.badge {
+    margin-right: 50px;
+}
+
+.nav-link {
+	font-size: 24px;
+}
+
+#price {
+	color: #D8304E;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.card-title {
+	font-weight: bold;
+	color: #C6C7C8
+}
+
+#desc {
+	font-size: 18px;
+}
+
+.logo {
+	width: 200px; /*200*/
+}
+.nav-item {
+	margin: 10px 0 10px 50px;
+	border-radius: 10px;
+	background-color: #18934F;
+	font-weight: bold;
+	padding: 5px;
+	color: #C6C7C8;
+}
+.nav-item:hover {
+	background-color: #22b363;
+}
+.index-header {
+	font-family: 'Righteous', cursive;
+	font-size: 54px;
+	text-align: center;
+	margin-top: 20px;
+}
+#cat {
+    margin-left: 20px;
+}
+.form-create {
+    margin: 30px 200px 200px 200px;
+    text-align: center;
+}
+.btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 24px;
+}
+#cards {
+    margin: auto;
+    margin-bottom: 50px;
+	background-color: #333;
+	border: 2px solid white;
+    color: #C6C7C8;
+}
+form {
+    margin: 20px;
+}
+#bid-input{
+    width: 200px;
+}
+#bid-button {
+    width: 200px;
+    margin-top: 0px;
+}
+#listing-title {
+    font-family: 'Coda Caption', sans-serif;
+    color: #ffc107
+}
+.items {
+    border: 2px solid white;
+    padding: 10px;
+    border-radius: 10px;
+}
+.bg-secondary {
+    font-size: 24px;
+}
+hr {
+    background-color: white;
+}
+#bronima {
+    width: 400px;
+    margin-top: 20px;
+}
