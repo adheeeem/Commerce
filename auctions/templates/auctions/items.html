@@ -1,0 +1,94 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+	{{ listing.title }}
+{% endblock %}
+
+{% block body %}
+
+	<form method="post" action="{% url 'items' listing.id %}" class="form">
+		<div class="container">
+			<div class="row items">
+				<div class="col first">
+					<h1 id="listing-title">{{ listing.title }}</h1>
+					<img src={{ listing.image_url }} width="550px" style="margin-bottom: 10px;">
+
+					<h5>Category: <span class="badge rounded-pill bg-info text-dark">{{ listing.category }}</span></h5>
+					<hr>
+					<p id="description">{{ listing.desc }}</p>
+					<hr>
+					{% if winner %}
+						<span style="margin-bottom: 10px;" class="badge bg-secondary" >Latest bid did: {{ winner.user }} <span>&#36;{{ winner.bid }}</span></span>
+					{% else %}
+						<span style="margin-bottom: 10px;" class="badge bg-secondary">Price: <span>&#36;{{ listing.price }}</span></span>
+					{% endif %}
+				</div>
+				<div class="col">
+					<br>
+					<br>
+					{% if user.is_authenticated %}
+						{% csrf_token %}
+						{% if listing.active %}
+							{% if on_off %}
+								<input type="submit" class="btn btn-danger" name="watchlist" value="Remove from watchlist">
+							{% else %}
+								<input type="submit" class="btn btn-info" name="watchlist" value="Add to watchlist">
+							{% endif %}
+							<br>
+							{% if bid_made_this_guy %}
+								<input class="btn btn-warning" type="submit" name="close" value="Close">
+							{% endif %}
+							<br>
+							<br>
+							  <div class="input-group mb-3" id="bid-input">
+								  <span class="input-group-text">$</span>
+								  {{ bids }}
+							  </div>
+								{% if message %}
+									{% if response %}
+										<div class="alert alert-danger" role="alert">
+										  Your bid is small
+										</div>
+									{% else %}
+										<div class="alert alert-success" role="alert">
+										  Bid successfully made
+										</div>
+									{% endif %}
+								{% endif %}
+							  <input id="bid-button" class="btn btn-primary" type="submit" name="bar" value="Bid">
+
+
+
+						{% else %}
+							<h1>Closed!</h1>
+							{% if won_message %}
+								<h1>You Won!</h1>
+							{% endif %}
+						{% endif %}
+						<div class="mb-3" id="bronima">
+						  {{ comment }}
+							<input class="btn btn-outline-primary" style="float: right; font-size: 18px;" type="submit" name="com" value="Submit">
+						</div>
+
+					{% endif %}
+
+
+				</div>
+			</div>
+			<h1>Comments</h1>
+			{% for com in comment_text %}
+				{% if com.theme == listing %}
+					<div class="card border-warning mb-3" style="max-width: 100%; background-color: #333">
+					  <div class="card-header"><h3 style="font-weight: bold">{{ com.user }}</h3></div>
+					  <div class="card-body">
+						  <p class="card-text">{{ com.comment }}</p>
+					  </div>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+
+
+	</form>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+	{{ ex_category }}
+{% endblock %}
+
+{% block body %}
+	<h1 class="index-header">{{ ex_category }}</h1>
+	<div class="row row-cols-3">
+	{% for listing in listings %}
+		{% if listing.category == ex_category %}
+			<div class="col">
+				<div class="card" id="cards" style="width: 18rem;">
+					<img alt="Card image cap" src={{ listing.image_url }} width="300px" class="card-img-top">
+					<div class="card-body">
+						<h5 class="card-title">{{ listing.title }}</h5>
+						<p class="card-text">{{ listing.desc}}</p>
+						<h5>Price: <span>&#36;{{ listing.price }}</span></h5>
+						<a href="/items/{{ listing.id }}" class="btn btn-primary">Go to listing page</a>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+	</div>
+{% endblock %}

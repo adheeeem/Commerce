@@ -1,0 +1,34 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+	Create Listing
+{% endblock %}
+
+{% block body %}
+    {% if user.is_authenticated %}
+		<h2 class="index-header">Create Listing</h2>
+		<form method="post" action="{% url 'create' %}" class="form-create">
+			{% csrf_token %}
+			<div class="input-group mb-3">
+				{{ form.title }}
+				{{ form.category }}
+			</div>
+			<div class="input-group mb-3">
+			  <span class="input-group-text">$</span>
+			  {{ form.price }}
+			</div>
+			<div class="input-group mb-3">
+			  <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+			  {{ form.image }}
+			</div>
+
+			<div class="input-group">
+			  <span class="input-group-text">Description</span>
+			  {{ form.desc }}
+			</div>
+			<input type="submit" name="" class="btn btn-primary" value="Submit">
+		</form>
+	{% else %}
+		<h3><a class="nav-link" href="{% url 'login' %}">Log In</a> to create a Listing</h3>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+	Watchlists
+{% endblock %}
+
+{% block body %}
+<h1 class="index-header">Watchlists</h1>
+<div class="row row-cols-3">
+	{% for w in watch %}
+		{% if w.user == u and w.visibility %}
+	<div class="col">
+		<div class="card" id="cards" style="width: 18rem;">
+			<img alt="Card image cap" src={{ w.title.image_url }} width="300px" class="card-img-top">
+			<div class="card-body">
+				<h4 class="card-title">{{ w.title.title }}</h4>
+				<h6 class="card-title">Category: {{ w.title.category }}</h6>
+				<h3>Price: <span>&#36;{{ w.title.price }}</span></h3>
+				<a href="/items/{{ w.title.id }}" class="btn btn-primary">Go to listing page</a>
+			</div>
+		</div>
+	</div>
+		{% endif %}
+	{% endfor %}
+</div>
+{% endblock %}

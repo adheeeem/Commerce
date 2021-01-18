@@ -1,0 +1,18 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2 class="index-header">Active Listings</h2>
+    	{% for listing in list %}
+    		<a href=/items/{{ listing.id }} class="index-href">
+                <div class="card mb-3" id="cardik">
+                  <img src={{ listing.image_url }} class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h3 class="card-title">{{ listing.title }}</h3>
+                    <p class="card-text" id="desc">{{ listing.desc }}</p>
+                    <p class="card-text" id="price">Price: <span>&#36;{{ listing.price }}</span></p>
+                  </div>
+                </div>
+    		</a>
+	    {% endfor %}
+{% endblock %}
+
